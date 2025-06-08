@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Pristine Cabs, Make Booking</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- for map-->
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.css' rel='stylesheet'>
+  <!-- favicon -->
+  <link rel="icon" href="img/taxi.png" sizes="16x16" type="image/png">
+
+  <!-- link to css -->
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <!-- Always shows a header, even in smaller screens. -->
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <span>
+          <div class="material-icons md-48">local_taxi <span>PRISTINE CABS</span></div>
+        </span>
+      </div>
+    </header>
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__title">
+        <div class="mdl-cell mdl-cell--4-col-phone">
+          <h3 class="mdl-layout-title mdl-typography--text-center">Make Booking</h3>
+        </div>
+      </div>
+    </header>
+    <div class="mdl-layout__drawer">
+      <span class="mdl-layout-title">Navigation drawer</span>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="index.html">Make Booking</a>
+        <a class="mdl-navigation__link" href="4allBookCard.html">All Bookings</a>
+      </nav>
+    </div>
+    <main class="mdl-layout__content">
+      <div class="page-content">
+        <!-- Your content goes here -->
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--4-col-phone">
+
+            <!-- Search Bar -->
+            <div class="mdl-textfield mdl-js-textfield">
+              <input class="mdl-textfield__input" type="text" id="locationAddress">
+              <label class="mdl-textfield__label" for="locationAddress">Search Location</label>
+            </div>
+            <button class="mdl-button mdl-js-button mdl-button--icon">
+              <i class="material-icons" onclick="getSearch()">search</i>
+            </button>
+          </div>
+        </div>
+        <div class="mdl-cell mdl-cell--4-col-phone">
+          <div class="scroll">
+            <li class="mdl-list__item ">
+              <span class="mdl-cell mdl-cell--4-col">Pick up point:<br><br>
+                <div id="pickUpPoint"></div>
+                
+              </span>
+              <button
+                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored center"
+                onclick="addToPickUpPoint()">
+                add
+              </button>
+            </li>
+            <li class="mdl-list__item">
+              <span class="mdl-cell mdl-cell--4-col">Destination:<br><br>
+                <div id="destination"></div>
+                
+              </span>
+              <button
+                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored center"
+                onclick="addToDestination()">
+                add
+              </button>
+            </li>
+          </div>
+        </div>
+
+        <!-- for map-->
+        <div id='map' class="mapbox">
+        </div>
+        <!-- for map-->
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--4-col-phone">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored center"
+              onclick="getLocation()">
+              Get Current Location
+            </button>
+            <br>
+            <div>
+              <label for = "taxiType">Taxi Type: </label>
+              <select id="taxiType">
+                <option>(No Selection)</option>
+                <option value="Car">Car</option>
+                <option value="Van">Van</option>
+                <option value="SUV">SUV</option>
+                <option value="Minibus">Minibus</option>
+              </select>
+            </div>
+            <br>
+            <div>
+              <div class="mdl-date-textfield mdl-js-date-textfield mdl-date-textfield--floating-label">
+                <label> Date:</label>
+                <input class="mdl-date-textfield__input" type="date" id="bookingDate" required>
+
+              </div>
+            </div>
+            <br>
+            <div>
+              <div class="mdl-date-textfield mdl-js-date-textfield mdl-date-textfield--floating-label">
+                <label> Time:</label>
+                <input class="mdl-date-textfield__input" type="time" id="bookingTime" required>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--4-col-phone">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored center"
+              onclick="addBooking()">
+              Book
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+ 
+  <script src="js/shared.js"></script>   
+  <script src="js/add.js"></script>
+  <script src="js/map.js"></script>
+
+</body>
+
+</html>
